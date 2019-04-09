@@ -46,7 +46,7 @@ def main(sc):
     def toCSV(row):
         return ','.join(str(r) for r in row)
     rdd = sc.textFile(file)
-    rdd.mapPartitionsWithIndex(processTrips).reduceByKey(lambda x,y: x+y).map(lambda x: (x[0].split('_')[1],[(x[0].split('_')[0],x[1])])).reduceByKey(lambda x,y: sorted(x+y,key=lambda y: -y[1]) if len(x+y)<=3 else sorted(x+y,key=lambda y: -y[1])[:3]).map(toCSV).saveAsTextFile('HW5.csv')
+    rdd.mapPartitionsWithIndex(processTrips).reduceByKey(lambda x,y: x+y).map(lambda x: (x[0].split('_')[1],[(x[0].split('_')[0],x[1])])).reduceByKey(lambda x,y: sorted(x+y,key=lambda y: -y[1]) if len(x+y)<=3 else sorted(x+y,key=lambda y: -y[1])[:3]).map(toCSV).saveAsTextFile('BDM-HW5.csv')
 if __name__ == "__main__":
     sc = SparkContext()
  # Execute the main function
