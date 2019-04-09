@@ -47,8 +47,8 @@ def main(sc):
                     neigh = nbs['neighborhood'][idx2]
                     break;
              if neigh and borough:
-                key = neigh + "_" + borough
-                counts[key] = counts.get(key, 0) + 1
+                  key = neigh + "_" + borough
+                  counts[key] = counts.get(key, 0) + 1
         return counts.items()      
     def toCSV(row):
         return ','.join(str(r) for r in row)
