@@ -30,8 +30,8 @@ def main(sc):
             nei_index.insert(idx, geometry.bounds)
         for row in reader:
             try :
-                p_end = geom.Point(proj(float(row[5]), float(row[4])))
-                p_start = geom.Point(proj(float(row[3]), float(row[2])))
+                p_end = geom.Point(proj(float(row[9]), float(row[10])))
+                p_start = geom.Point(proj(float(row[5]), float(row[6])))
             except:
                 continue 
             for idx in bor_index.intersection((p_end.x, p_end.y, p_end.x, p_end.y)):
