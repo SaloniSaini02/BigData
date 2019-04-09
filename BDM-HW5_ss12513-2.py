@@ -46,7 +46,7 @@ def main(sc):
                  if nbs.geometry[idx2].contains(p_start):
                     neigh = nbs['neighborhood'][idx2]
                     break;
-             if neigh and borough:
+            if neigh and borough:
                   key = neigh + "_" + borough
                   counts[key] = counts.get(key, 0) + 1
         return counts.items()      
