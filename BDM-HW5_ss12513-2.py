@@ -36,7 +36,7 @@ def main(sc):
             except:
                 continue 
             for idx in nei_index.intersection((p_end.x, p_end.y, p_end.x, p_end.y)):
-                if boroughs.geometry[idx].contains(p_end):
+                if nbs.geometry[idx].contains(p_end):
                     borough = boroughs['borough'][idx] 
                     break;
             for idx2 in nei_index.intersection((p_start.x, p_start.y, p_start.x, p_start.y)):
