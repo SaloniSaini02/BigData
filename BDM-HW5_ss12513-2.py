@@ -16,6 +16,7 @@ def main(sc):
         reader = csv.reader(records)
         counts={}
         borough = None
+        nei = None
         proj = pyproj.Proj(init="epsg:2263", preserve_units=True)
         #boroughs = 'boroughs.geojson'
         #boroughs = "hdfs:///tmp/bdm/boroughs.geojson"
@@ -30,6 +31,8 @@ def main(sc):
         for idx,geometry in enumerate(nbs.geometry):
             nei_index.insert(idx, geometry.bounds)
         for row in reader:
+            borough = None
+            nei = None
             try :
                 p_end = geom.Point(proj(float(row[9]), float(row[10])))
                 p_start = geom.Point(proj(float(row[5]), float(row[6])))
@@ -42,9 +45,10 @@ def main(sc):
             for idx2 in nei_index.intersection((p_start.x, p_start.y, p_start.x, p_start.y)):
                  if nbs.geometry[idx2].contains(p_start):
                     neigh = nbs['neighborhood'][idx2]
-                    key = neigh + "_" + borough
-                    counts[key] = counts.get(key, 0) + 1
                     break;
+             if neigh and borough:
+                key = neigh + "_" + borough
+                counts[key] = counts.get(key, 0) + 1
         return counts.items()      
     def toCSV(row):
         return ','.join(str(r) for r in row)
