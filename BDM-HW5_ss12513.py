@@ -18,12 +18,6 @@ def main(sc):
         borough = None
         nei = None
         proj = pyproj.Proj(init="epsg:2263", preserve_units=True)
-        #boroughs = 'boroughs.geojson'
-        #boroughs = "hdfs:///tmp/bdm/boroughs.geojson"
-        #boroughs = gpd.read_file(boroughs).to_crs(fiona.crs.from_epsg(2263))
-        #bor_index = rtree.Rtree()
-        #for idx,geometry in enumerate(boroughs.geometry):
-            #bor_index.insert(idx, geometry.bounds)
         neighborhoods = 'neighborhoods.geojson'
         #neighborhoods = "hdfs:///tmp/bdm/neighborhoods.geojson"
         nbs = gpd.read_file(neighborhoods).to_crs(fiona.crs.from_epsg(2263))
