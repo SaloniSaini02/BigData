@@ -47,7 +47,7 @@ def main(sc):
         return ','.join(str(r) for r in row)
     rdd = sc.textFile(file)
     result = rdd.mapPartitionsWithIndex(processTrips).reduceByKey(lambda x,y: x+y).map(lambda x: (x[0].split('_')[1],[(x[0].split('_')[0],x[1])])).reduceByKey(lambda x,y: sorted(x+y,key=lambda y: -y[1]) if len(x+y)<=3 else sorted(x+y,key=lambda y: -y[1])[:3]).map(toCSV)#.saveAsTextFile('output12').collect()
-    print(result)
+    print(result.collect())
 if __name__ == "__main__":
     sc = SparkContext()
  # Execute the main function
