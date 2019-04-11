@@ -6,7 +6,7 @@
 
 from pyspark import SparkContext
 
-def main():
+def main(sc):
     import sys
     file = sys.argv[1]
     def createIndex(shapefile):
