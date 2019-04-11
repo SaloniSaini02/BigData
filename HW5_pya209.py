@@ -44,8 +44,8 @@ def main(sc):
             if len(row)==18:
                 try:
                     PickupLong, PickupLat, DropLong, DropLat = float(row[5]), float(row[6]), float(row[9]), float(row[10])
-                    pickup = geom.Point(proj(PickupLon, PickupLat))
-                    drop = geom.Point(proj(DropLon, DropLat))
+                    pickup = geom.Point(proj(PickupLong, PickupLat))
+                    drop = geom.Point(proj(DropLong, DropLat))
                     PickNeighbor = findZone(pickup, index, zones)
                     DropBoro = findZone(drop, index, zones)
                     if PickNeighbor and DropBoro:
